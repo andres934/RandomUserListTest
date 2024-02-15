@@ -5,7 +5,6 @@ import com.example.domain.model.UserData
 import kotlinx.coroutines.flow.Flow
 
 sealed class ListUiState {
-    data object Idle : ListUiState()
 
     data object Loading : ListUiState()
 

@@ -134,10 +134,8 @@ fun UserDetailScreen(
                         .align(Alignment.BottomStart)
                 )
             }
-            // Transparent top app bar
         },
         content = {
-            // Profile content
             Column(
                 modifier = Modifier
                     .background(color = Color.White)
@@ -158,7 +156,6 @@ fun UserDetailScreen(
                         )
                     }
                 }
-                // Profile details
                 Column(
                     modifier = Modifier
                         .padding(16.dp)
@@ -264,8 +261,8 @@ fun UserInfoField(
 fun UserDetailScreenPreview() {
     UserDetailScreen(
         navController = rememberNavController(),
-        fullName = "Andres Rodriguez",
-        email = "andresdrgarcia@gmail.com",
+        fullName = "John Doe",
+        email = "johndoe@example.com",
         gender = "Male",
         registryDate = "11/05/2018",
         phoneNumber = "+34 123456789",
@@ -273,9 +270,4 @@ fun UserDetailScreenPreview() {
         longitude = "65135135",
         profilePicture = "https://randomuser.me/api/portraits/men/66.jpg"
     )
-//    UserInfoField(
-//        fieldIcon = Icons.Outlined.AccountCircle,
-//        fieldTitle = "Nombre y Apellido",
-//        fieldData = "Andres Rodriguez"
-//    )
 }

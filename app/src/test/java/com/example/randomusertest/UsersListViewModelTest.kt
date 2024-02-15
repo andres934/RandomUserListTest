@@ -44,20 +44,20 @@ class UsersListViewModelTest {
         val mockPagingData = flowOf(PagingData.from(listOf(defaultParsedUserData)))
 
         // Mock behavior of use case
-        coEvery { mockUseCase.getRandomUsers("") } returns mockPagingData
+        coEvery { mockUseCase.getRandomUsers() } returns mockPagingData
 
         // Create UsersListViewModel instance with mock use case
         val viewModel = UsersListViewModel(mockUseCase, testDispatcher)
 
         // Call the getRandomUsers function
-        viewModel.getRandomUsers("")
+        viewModel.getRandomUsers()
 
         assert(viewModel.uiState.value is ListUiState.Success)
         (viewModel.uiState.first() as ListUiState.Success).data.first().map {
             assertEquals(it, defaultParsedUserData)
         }
 
-        coVerify { mockUseCase.getRandomUsers("") }
+        coVerify { mockUseCase.getRandomUsers() }
     }
 
     @Test
@@ -66,20 +66,20 @@ class UsersListViewModelTest {
         val errorMessage = "Error calling random user service"
 
         // Mock behavior of use case
-        coEvery { mockUseCase.getRandomUsers("") } throws Exception(errorMessage)
+        coEvery { mockUseCase.getRandomUsers() } throws Exception(errorMessage)
 
         // Create UsersListViewModel instance with mock use case
         val viewModel = UsersListViewModel(mockUseCase, testDispatcher)
 
         // Call the getRandomUsers function
-        viewModel.getRandomUsers("")
+        viewModel.getRandomUsers()
 
         // Verify that the viewModel emits error state with correct error message
         assert(viewModel.uiState.value is ListUiState.Error)
         assertEquals((viewModel.uiState.value as ListUiState.Error).errorMsg, errorMessage)
 
         // Verify that the use case method was called with the correct parameter
-        coVerify { mockUseCase.getRandomUsers("") }
+        coVerify { mockUseCase.getRandomUsers() }
     }
 
     @After

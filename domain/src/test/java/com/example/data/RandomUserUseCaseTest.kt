@@ -24,16 +24,16 @@ class RandomUserUseCaseTest {
             val expectedResult: Flow<PagingData<UserData>> = mockk()
 
             coEvery {
-                fakeRepository.getRandomUsers("")
+                fakeRepository.getRandomUsers()
             } returns expectedResult
 
             // When
-            val result = useCase.getRandomUsers("")
+            val result = useCase.getRandomUsers()
 
             // Then
 
             coVerify(exactly = 1) {
-                fakeRepository.getRandomUsers("")
+                fakeRepository.getRandomUsers()
             }
             assert(result == expectedResult)
             confirmVerified(fakeRepository)
@@ -47,16 +47,16 @@ class RandomUserUseCaseTest {
             val expectedResult = IllegalArgumentException()
 
             coEvery {
-                fakeRepository.getRandomUsers("")
+                fakeRepository.getRandomUsers()
             } throws expectedResult
 
             try {
                 // When
-                useCase.getRandomUsers("")
+                useCase.getRandomUsers()
             } catch (e: IllegalArgumentException) {
                 // Then
                 coVerify(exactly = 1) {
-                    fakeRepository.getRandomUsers("")
+                    fakeRepository.getRandomUsers()
                 }
                 assert(e == expectedResult)
             }

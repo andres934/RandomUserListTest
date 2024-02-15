@@ -20,7 +20,7 @@ class RandomUserRepositoryImpl(
         private const val PAGE_SIZE = 30
     }
 
-    override suspend fun getRandomUsers(query: String): Flow<PagingData<UserData>> {
+    override suspend fun getRandomUsers(): Flow<PagingData<UserData>> {
         return Pager(
             config = PagingConfig(
                 pageSize = PAGE_SIZE,

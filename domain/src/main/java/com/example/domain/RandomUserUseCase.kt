@@ -8,7 +8,7 @@ class RandomUserUseCase(
     private val repository: RandomUserRepository
 ) {
 
-    suspend fun getRandomUsers(query: String): Flow<PagingData<UserData>> =
-        repository.getRandomUsers(query)
+    suspend fun getRandomUsers(): Flow<PagingData<UserData>> =
+        repository.getRandomUsers()
 
 }

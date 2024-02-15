@@ -1,7 +1,6 @@
 package com.example.data.datasource
 
 import android.accounts.NetworkErrorException
-import android.util.Log
 import com.example.data.internal.Api
 import com.example.data.model.RandomUserResponse
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -34,10 +33,6 @@ class RemoteUsersDataSourceImpl : RemoteUsersDataSource {
                             continuation.resume(this)
                         }
                     } else {
-                        Log.e(
-                            "NetworkError",
-                            response.errorBody()?.string() ?: "Error with random users call"
-                        )
                         val error =
                             NetworkErrorException(
                                 response.errorBody()?.string() ?: "Error with random users call"
@@ -51,7 +46,6 @@ class RemoteUsersDataSourceImpl : RemoteUsersDataSource {
                         NetworkErrorException(
                             t.message ?: "Error with random users call"
                         )
-                    Log.e("NetworkError", t.message ?: "Error with random users call")
                     continuation.resumeWithException(error)
                 }
             })

@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
 class FakeRepositoryImpl(private val shouldFail: Boolean = false) : RandomUserRepository {
-    override suspend fun getRandomUsers(query: String): Flow<PagingData<UserData>> {
+    override suspend fun getRandomUsers(): Flow<PagingData<UserData>> {
         if (shouldFail)
             throw Throwable("This is an error")
         return flowOf(PagingData.from(listOf(defaultParsedUserData)))

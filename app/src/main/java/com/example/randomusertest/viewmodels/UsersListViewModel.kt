@@ -8,7 +8,6 @@ import com.example.data.datasource.RemoteUsersDataSourceImpl
 import com.example.domain.RandomUserUseCase
 import com.example.randomusertest.ui.states.ListUiState
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -24,10 +23,10 @@ class UsersListViewModel(
     private val _uiState = MutableStateFlow<ListUiState>(ListUiState.Loading)
     val uiState = _uiState.asStateFlow()
 
-    fun getRandomUsers(query: String) {
+    fun getRandomUsers() {
         viewModelScope.launch(backgroundCoroutineContext) {
             runCatching {
-                useCase.getRandomUsers(query).cachedIn(viewModelScope)
+                useCase.getRandomUsers().cachedIn(viewModelScope)
             }.fold(
                 {
                     _uiState.emit(ListUiState.Success(it))

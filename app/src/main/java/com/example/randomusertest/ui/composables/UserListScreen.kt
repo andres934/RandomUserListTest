@@ -53,8 +53,8 @@ import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import coil.compose.rememberAsyncImagePainter
 import com.example.domain.model.UserData
-import com.example.randomusertest.ui.states.ListUiState
 import com.example.randomusertest.ui.navigation.AppScreens
+import com.example.randomusertest.ui.states.ListUiState
 import com.example.randomusertest.viewmodels.UsersListViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -68,7 +68,7 @@ fun UserListScreen(
     val uiState by viewModel.uiState.collectAsState()
 
     LaunchedEffect(key1 = "MyKey") {
-        viewModel.getRandomUsers("")
+        viewModel.getRandomUsers()
     }
 
     Scaffold(
@@ -112,8 +112,6 @@ fun UserListScreen(
             is ListUiState.Error -> {
                 ErrorScreen()
             }
-
-            else -> {}
         }
     }
 }
@@ -249,11 +247,4 @@ fun RandomUserUIItem(
 @Composable
 fun UserListScreenPreview() {
     UserListScreen(navController = rememberNavController())
-//    RandomUserUIItem(
-//        name = "Andres",
-//        lastName = "Rodriguez",
-//        email = "andresdrgarcia@gmail.com",
-//        profilePicture = "https://randomuser.me/api/portraits/women/67.jpg",
-//        onItemClicked = {}
-//    )
 }
