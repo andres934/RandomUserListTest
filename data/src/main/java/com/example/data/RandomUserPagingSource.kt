@@ -9,7 +9,7 @@ import retrofit2.HttpException
 
 internal class RandomUserPagingSource(
     private val remoteDataSource: RemoteUsersDataSource
-): PagingSource<Int, UserDataResponse>() {
+) : PagingSource<Int, UserDataResponse>() {
 
     override fun getRefreshKey(state: PagingState<Int, UserDataResponse>): Int? =
         state.anchorPosition?.let { anchorPosition ->
@@ -28,7 +28,9 @@ internal class RandomUserPagingSource(
             val nextKey = currentPage + 1
 
             LoadResult.Page(
-                data = randomUsers.results.distinctBy { it.login?.uuid },
+                data = randomUsers.results.distinctBy {
+                    it.name to it.email
+                },
                 prevKey = null,
                 nextKey = nextKey
             )

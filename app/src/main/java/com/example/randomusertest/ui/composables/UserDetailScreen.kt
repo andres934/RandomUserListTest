@@ -47,6 +47,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -66,8 +67,8 @@ fun UserDetailScreen(
     gender: String?,
     registryDate: String?,
     phoneNumber: String?,
-    latitude: String?,
-    longitude: String?,
+    latitude: String?, // To be used for dynamic map location
+    longitude: String?, // To be used for dynamic map location
     profilePicture: String?
 ) {
 
@@ -161,6 +162,7 @@ fun UserDetailScreen(
                         .padding(16.dp)
                         .fillMaxWidth()
                         .verticalScroll(scrollState)
+                        .testTag("detailsContent")
                 ) {
                     fullName?.run {
                         UserInfoField(
@@ -197,6 +199,20 @@ fun UserDetailScreen(
                             fieldData = this
                         )
                     }
+                    Text(
+                        modifier = Modifier.padding(start = 60.dp, bottom = 12.dp),
+                        text = "Direccion",
+                        color = Color.LightGray
+                    )
+                    Image(
+                        painter = painterResource(id = R.mipmap.banner_map_static),
+                        contentDescription = "Location map",
+                        contentScale = ContentScale.Crop,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .align(Alignment.End)
+                            .padding(start = 60.dp)
+                    )
                 }
             }
         }
@@ -213,6 +229,7 @@ fun UserInfoField(
 
     Row(
         modifier = Modifier
+            .fillMaxWidth()
             .background(Color.White)
             .padding(bottom = 12.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -224,6 +241,7 @@ fun UserInfoField(
         )
         OutlinedTextField(
             modifier = Modifier
+                .fillMaxWidth()
                 .padding(start = 0.dp)
                 .drawWithContent {
                     drawContent()

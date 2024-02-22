@@ -2,11 +2,13 @@ package com.example.randomusertest
 
 import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertIsNotDisplayed
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performScrollTo
 import androidx.navigation.compose.rememberNavController
 import com.example.data.mocks.defaultParsedUserData
 import com.example.randomusertest.ui.composables.UserDetailScreen
@@ -83,6 +85,22 @@ class UserDetailsScreenTest {
         rule.onNodeWithText("Telefono")
             .assertIsDisplayed()
             .assertTextContains(defaultParsedUserData.phoneNumber)
+
+        rule.onNodeWithText("Direccion")
+            .assertExists()
+            .assertIsNotDisplayed()
+
+        rule.onNodeWithContentDescription("Location map")
+            .assertExists()
+            .assertIsNotDisplayed()
+            .performScrollTo()
+
+        rule.onNodeWithText("Direccion")
+            .assertIsDisplayed()
+
+        rule.onNodeWithContentDescription("Location map")
+            .assertIsDisplayed()
+
     }
 
     @Test

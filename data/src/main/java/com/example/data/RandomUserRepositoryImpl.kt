@@ -15,7 +15,7 @@ class RandomUserRepositoryImpl(
 ): RandomUserRepository {
 
     companion object {
-        private const val INITIAL_PAGE_KEY = 0
+        private const val INITIAL_PAGE_KEY = 1
         private const val PREFETCH_DISTANCE = 15
         private const val PAGE_SIZE = 30
     }

@@ -95,3 +95,12 @@ val defaultParsedUserData = UserData(
     longitude = "134.8719",
     profilePicture = "https://randomuser.me/api/portraits/men/75.jpg"
 )
+
+val defaultParsedUserDataList =
+    listOf(
+        defaultParsedUserData,
+        defaultParsedUserData.copy(name = "Maria", lastName = "Ramirez", email = "maria.ramirez@example.com"),
+        defaultParsedUserData.copy(name = "John", lastName = "Doe", email = "john.doe@example.com"),
+        defaultParsedUserData.copy(name = "Ali", lastName = "Dyrdal", email = "ali.dyrdal@example.com"),
+        defaultParsedUserData.copy(name = "Vivian", lastName = "Flores", email = "vivian.flores@example.com")
+    )

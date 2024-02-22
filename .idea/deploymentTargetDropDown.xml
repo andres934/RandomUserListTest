@@ -2,22 +2,16 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="UserDetailsScreenTest">
+      <entry key="All Tests">
+        <State />
+      </entry>
+      <entry key="Tests in 'com.example.randomusertest'">
         <State />
       </entry>
       <entry key="app">
         <State />
       </entry>
       <entry key="onDetailsOpenedShouldShowAllReceivedUserInformation()">
-        <State />
-      </entry>
-      <entry key="onDetailsOpenedWithNullNameShouldDifferentTitleAndHideNameFieldShowAllReceivedUserInformation()">
-        <State />
-      </entry>
-      <entry key="onListItemClickDetailsShouldOpen()">
-        <State />
-      </entry>
-      <entry key="randomUserListShouldShowErrorMsgWhenCallFails()">
         <State />
       </entry>
     </value>
